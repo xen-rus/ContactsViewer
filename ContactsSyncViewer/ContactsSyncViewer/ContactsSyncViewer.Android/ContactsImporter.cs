@@ -32,7 +32,7 @@ namespace ContactsSyncViewer.Droid
         Dictionary<int, IContact> internalDictionary = new Dictionary<int, IContact>();
 
         //Const It change to use multitast function
-        private const int MultyTaskContact = 50;
+        private const int MultiTasksContact = 50;
 
 
         // Sync commplite or failt
@@ -60,14 +60,14 @@ namespace ContactsSyncViewer.Droid
 
             var chunk = cur.Count / proc + 1;
 
-            if(proc > 0 && cur.Count > MultyTaskContact) //FastMode MultyTask
+            if(proc > 0 && cur.Count > MultiTasksContact) //FastMode MultiTasks
             {
                 Task<bool>[] cursorTasks = new Task<bool>[proc];
 
                 for (int i = 0; i < proc; i++)
                 {
                     int index = i;
-                    cursorTasks[i] = Task.Run(async() => await  CoursorMultiTask(cr, index * chunk, (index + 1) * chunk));
+                    cursorTasks[i] = Task.Run(async() => await  CoursorMultiTasks(cr, index * chunk, (index + 1) * chunk));
                 }
 
                 Task.WaitAll(cursorTasks);
@@ -118,8 +118,8 @@ namespace ContactsSyncViewer.Droid
         }
 
 
-        //Cycle to fill contact for multy Tasks
-        private Task<bool> CoursorMultiTask( ContentResolver cr, int posStart = 0, int posEnd = 0)
+        //Cycle to fill contact for multiTasks
+        private Task<bool> CoursorMultiTasks( ContentResolver cr, int posStart = 0, int posEnd = 0)
         {
             ICursor coursor = cr.Query(ContactsContract.Contacts.ContentUri, ContConst.projContacts,
                        ContConst.ContcatsHasNumber + " = 1 ", null, null);
