@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContactsSyncViewer.MainPage"
+             Title="Синхронизация контактов">
+        <AbsoluteLayout x:Name="AbsIndidcator" 
+                  BackgroundColor="Transparent"
+                 VerticalOptions="FillAndExpand"  
+                HorizontalOptions="FillAndExpand">
+        
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="0, 20, 0, 0" />
+                        <On Platform="Android" Value="0, 0, 0, 0" />
+                     </OnPlatform.Platforms>
+                </OnPlatform>
+            </StackLayout.Padding>
+            <Grid  ColumnSpacing="50"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" Margin="10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+                        <Label  x:Name="SynchLabel" Text="Cинхронизация не производилась" TextColor="Black"  HeightRequest="150" FontSize="Medium" Grid.Column="0"  HorizontalOptions="Center" VerticalOptions="Center" Padding="10,20,10,0"  />
+                        <Button WidthRequest="150" HeightRequest="50" Text="Синхронизация" Clicked="SychClick"  HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" Padding="0,0,0,0"  />
+                </Grid>
+                
+                <ListView x:Name="ContactsList" ItemsSource="{Binding}"   ItemSelected="OnItemSelected"  HasUnevenRows="True" RowHeight="55" VerticalOptions="End" Grid.Row="1" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <ViewCell.View >
+                                <StackLayout Orientation="Vertical"  MinimumHeightRequest="25" Padding="5">
+                                        <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding FirstName}" FontSize="Medium" />
+                                        <Label Text=" " FontSize="Medium" />
+                                        <Label Text="{Binding LastName}" FontSize="Medium" />
+                                    </StackLayout>
+                                    <Label Text="{Binding Phone}" FontSize="Medium" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+                <ActivityIndicator x:Name="Indicator"  VerticalOptions="StartAndExpand" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center"  Grid.Row="1"/>
+            </Grid>
+        </StackLayout>
+    </AbsoluteLayout>
+
+
+
+</ContentPage>
