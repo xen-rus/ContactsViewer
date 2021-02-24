@@ -13,7 +13,7 @@ namespace ContactsSyncViewer
     public partial class MainPage : ContentPage
     {
         // safe double click
-        bool alocker = false;
+        bool UIlocker = false;
         public MainPage()
         {
             InitializeComponent();
@@ -40,10 +40,10 @@ namespace ContactsSyncViewer
 
         private async void SychClick(object sender, EventArgs args)
         {
-            if (!alocker)
+            if (!UIlocker)
             {
-                alocker = true;
-                bool answer = await DisplayAlert("Warning", "Do you wand to syncronize contacts?", "Yes", "No");
+                UIlocker = true;
+                bool answer = await DisplayAlert("Внимание", "Хотите ли Вы синхронизировать контакты?", "Да", "Нет");
 
                 if (answer)
                 {
@@ -78,11 +78,11 @@ namespace ContactsSyncViewer
                             SynchLabel.TextColor = Color.Red;
                         }
 
-                        alocker = false;
+                        UIlocker = false;
                     });
                 }
                 else
-                    alocker = false;
+                    UIlocker = false;
             }
         }
     }
