@@ -10,11 +10,11 @@ namespace ContactsSyncViewer.Services
 {
     class Synchronization
     {
-        public static bool Synchronize()
+        public  bool Synchronize()
         {
            var InternalContacts = DependencyService.Get<IContactsImporter>().GetContacts();
 
-            bool SyncComlete = DependencyService.Get<IContactsImporter>().Synch;
+            var SyncComlete = DependencyService.Get<IContactsImporter>().Synch;
 
             if (SyncComlete)
                 return DBSingletone.Database.SyncronizeContacts(InternalContacts);
