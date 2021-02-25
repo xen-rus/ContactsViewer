@@ -27,11 +27,31 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="150" />
                     </Grid.ColumnDefinitions>
-                        <Label  x:Name="SynchLabel" Text="Cинхронизация не производилась" TextColor="Black"  HeightRequest="150" FontSize="Medium" Grid.Column="0"  HorizontalOptions="Center" VerticalOptions="Center" Padding="10,20,10,0"  />
-                        <Button WidthRequest="150" HeightRequest="50" Text="Синхронизация" Clicked="SychClick"  HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" Padding="0,0,0,0"  />
+                        <Label  x:Name="SynchLabel" 
+                               Text="Cинхронизация не производилась" 
+                               TextColor="Black"  
+                               HeightRequest="150" 
+                               FontSize="Medium" 
+                               Grid.Column="0"  
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               Padding="10,20,10,0"  />
+                        <Button WidthRequest="150" 
+                                HeightRequest="50" 
+                                Text="Синхронизация" 
+                                Clicked="SychClick"  
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center" 
+                                Grid.Column="1" 
+                                Padding="0,0,0,0"  />
                 </Grid>
                 
-                <ListView x:Name="ContactsList" ItemsSource="{Binding}"   ItemSelected="OnItemSelected"  HasUnevenRows="True" RowHeight="55" VerticalOptions="End" Grid.Row="1" >
+                <ListView x:Name="ContactsList" ItemsSource="{Binding}"   
+                          ItemSelected="OnItemSelected"  
+                          HasUnevenRows="True" 
+                          RowHeight="55" 
+                          VerticalOptions="End"
+                          Grid.Row="1" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -49,7 +69,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-                <ActivityIndicator x:Name="Indicator"  VerticalOptions="StartAndExpand" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center"  Grid.Row="1"/>
+                <ActivityIndicator x:Name="Indicator"  
+                                   VerticalOptions="StartAndExpand" 
+                                   WidthRequest="80" 
+                                   HeightRequest="80"  
+                                   HorizontalOptions="Center"  
+                                   Grid.Row="1"/>
             </Grid>
         </StackLayout>
     </AbsoluteLayout>
