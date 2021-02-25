@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 namespace ContactsSyncViewer.Droid
 {
   
+    //Get Contacts form Phone
     class ContactsImporter : IContactsImporter
     {     
         // Task locker object
@@ -35,7 +36,7 @@ namespace ContactsSyncViewer.Droid
         private const int MultiTasksContact = 50;
 
 
-        // Sync commplite or failt
+        // Sync complite or failt
         public bool Synch { get => bSynch; }
 
         private bool bSynch;
@@ -60,7 +61,9 @@ namespace ContactsSyncViewer.Droid
 
             var chunk = cur.Count / proc + 1;
 
-            if(proc > 0 && cur.Count > MultiTasksContact) //FastMode MultiTasks
+
+            //Proc/2 Tasks to read contcact
+            if (proc > 0 && cur.Count > MultiTasksContact) 
             {
                 Task<bool>[] cursorTasks = new Task<bool>[proc];
 
@@ -95,7 +98,7 @@ namespace ContactsSyncViewer.Droid
 
         }
 
-        //Cycle to fill contact for 1 Task
+        //Cycle it is to fill contact for 1 Task
         private bool Coursor(ICursor coursor,ContentResolver cr)
         {
             try
@@ -118,7 +121,7 @@ namespace ContactsSyncViewer.Droid
         }
 
 
-        //Cycle to fill contact for multiTasks
+        //Cycle it is  to fill contact for multiTasks
         private Task<bool> CoursorMultiTasks( ContentResolver cr, int posStart = 0, int posEnd = 0)
         {
             ICursor coursor = cr.Query(ContactsContract.Contacts.ContentUri, ContConst.projContacts,
