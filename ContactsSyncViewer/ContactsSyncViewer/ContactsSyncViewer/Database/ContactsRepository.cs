@@ -26,6 +26,7 @@ namespace ContactsSyncViewer.Database
             return database.Delete<Contact>(id);
         }
 
+        // Synchronize contact Dictionary to SQLite DB
         public bool SyncronizeContacts(Dictionary<int, IContact> contDictionary)
         {
             try
@@ -34,7 +35,7 @@ namespace ContactsSyncViewer.Database
 
                 bool isEmpty = contactsDBList.Count == 0;
 
-                // Remove Contacts
+                // Remove Contacts from DB
                 if (contactsDBList.Count > contDictionary.Count)
                     for (int i = 0; i < contactsDBList.Count; i++)
                     {
@@ -43,7 +44,7 @@ namespace ContactsSyncViewer.Database
                     }
 
 
-                // Add or Update contacts
+                // Add or Update contacts to DB
                 foreach (var key in contDictionary.Keys)
                 {
 
