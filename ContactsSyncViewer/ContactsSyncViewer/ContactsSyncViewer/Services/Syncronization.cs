@@ -12,12 +12,12 @@ namespace ContactsSyncViewer.Services
     {
         public  bool Synchronize()
         {
-           var InternalContacts = DependencyService.Get<IContactsImporter>().GetContacts();
+           var internalContacts = DependencyService.Get<IContactsImporter>().GetContacts();
 
-            var SyncComlete = DependencyService.Get<IContactsImporter>().Synch;
+            var synchComplete = DependencyService.Get<IContactsImporter>().Synch;
 
-            if (SyncComlete)
-                return DBSingletone.Database.SyncronizeContacts(InternalContacts);
+            if (synchComplete)
+                return DBSingletone.Database.SyncronizeContacts(internalContacts);
             else
                 return false;
         }
