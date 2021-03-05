@@ -53,7 +53,7 @@ namespace ContactsSyncViewer
                     SynchLabel.Text = "Синхронизация";
                     SynchLabel.TextColor = Color.DarkOrange;
 
-                     var synchComplite = await Task.Run(() => new Synchronization().Synchronize());
+                     var synchComplete = await Task.Run(() => new Synchronization().Synchronize());
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
