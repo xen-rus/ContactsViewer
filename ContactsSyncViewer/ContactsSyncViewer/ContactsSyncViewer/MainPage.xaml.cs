@@ -64,7 +64,7 @@ namespace ContactsSyncViewer
                         Indicator.IsVisible = false;
                         Indicator.IsRunning = false;
 
-                        if (synchComplite)
+                        if (synchComplete)
                         {
                             SynchLabel.Text = "Синхронизация Завершена";
                             SynchLabel.TextColor = Color.Green;
