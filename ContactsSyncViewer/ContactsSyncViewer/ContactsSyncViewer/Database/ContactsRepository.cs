@@ -27,37 +27,72 @@ namespace ContactsSyncViewer.Database
         }
 
         // Synchronize contact Dictionary to SQLite DB
-        public bool SyncronizeContacts(Dictionary<int, IContact> contDictionary)
+        public bool SynchronizeContacts(Dictionary<int, IContact> contDictionary)
         {
             try
             {
                 var contactsDBList = database.Table<Contact>().ToList();
 
-                bool isEmpty = contactsDBList.Count == 0;
-
                 // Remove Contacts from DB
-                if (contactsDBList.Count > contDictionary.Count)
-                    for (int i = 0; i < contactsDBList.Count; i++)
-                    {
-                        if (!contDictionary.ContainsKey(contactsDBList[i].Id))
-                            DeleteItem(contactsDBList[i].Id);
-                    }
-
+                bool isComplete =  RemoveFromDB(contactsDBList, contDictionary);
+                if (!isComplete)
+                    throw (new Exception("Can't remove"));
 
                 // Add or Update contacts to DB
-                foreach (var key in contDictionary.Keys)
+                isComplete = AddOrUpdateDB(contactsDBList, contDictionary);
+
+                if (!isComplete)
+                    throw (new Exception("Can't add"));
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+            return true;
+        }
+
+        private bool RemoveFromDB(List<Contact> _contactsDBList, Dictionary<int, IContact> _contDictionary)
+        {
+            try
+            { 
+            if (_contactsDBList.Count > _contDictionary.Count)
+                for (int i = 0; i < _contactsDBList.Count; i++)
+                {
+                    if (!_contDictionary.ContainsKey(_contactsDBList[i].Id))
+                        DeleteItem(_contactsDBList[i].Id);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        
+
+        private bool AddOrUpdateDB(List<Contact> _contactsDBList, Dictionary<int, IContact> _contDictionary)
+        {
+            bool isEmpty = _contactsDBList.Count == 0;
+
+            try
+            {
+                foreach (var key in _contDictionary.Keys)
                 {
 
-                    Contact oneContact = (contDictionary[key] as Contact);
+                    Contact oneContact = (_contDictionary[key] as Contact);
 
                     if (!isEmpty)
                     {
 
-                        var infoID = contactsDBList.Where(item => item.Id == key);
+                        var infoID = _contactsDBList.Where(item => item.Id == key);
 
                         if (infoID.ToList().Count > 0)
                         {
-                            if (infoID.First().AdditionalSynchData != contDictionary[key].AdditionalSynchData)
+                            if (infoID.First().AdditionalSynchData != _contDictionary[key].AdditionalSynchData)
                                 database.Update(oneContact, typeof(Contact));
                             else
                                 continue;
@@ -68,14 +103,13 @@ namespace ContactsSyncViewer.Database
                     else
                         database.Insert(oneContact, typeof(Contact));
                 }
-
+                return true;
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine(ex.Message);
                 return false;
             }
-            return true;
+
         }
 
         public void DeleteAll()

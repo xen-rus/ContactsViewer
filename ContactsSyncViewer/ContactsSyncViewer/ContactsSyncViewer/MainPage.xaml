@@ -28,17 +28,17 @@
                         <ColumnDefinition Width="150" />
                     </Grid.ColumnDefinitions>
                         <Label  x:Name="SynchLabel" 
-                               Text="Cинхронизация не производилась" 
+                               Text="It is not synchronize" 
                                TextColor="Black"  
                                HeightRequest="150" 
                                FontSize="Medium" 
                                Grid.Column="0"  
-                               HorizontalOptions="Center" 
+                               HorizontalOptions="Start" 
                                VerticalOptions="Center" 
                                Padding="10,20,10,0"  />
                         <Button WidthRequest="150" 
                                 HeightRequest="50" 
-                                Text="Синхронизация" 
+                                Text="Sinchronization" 
                                 Clicked="SychClick"  
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center" 

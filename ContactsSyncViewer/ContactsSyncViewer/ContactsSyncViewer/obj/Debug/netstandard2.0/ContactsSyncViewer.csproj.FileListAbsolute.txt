@@ -1,0 +1,14 @@
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\bin\Debug\netstandard2.0\ContactsSyncViewer.deps.json
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\bin\Debug\netstandard2.0\ContactsSyncViewer.dll
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\bin\Debug\netstandard2.0\ref\ContactsSyncViewer.dll
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\bin\Debug\netstandard2.0\ContactsSyncViewer.pdb
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\ContactsSyncViewer.csprojAssemblyReference.cache
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\App.xaml.g.cs
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\ContactsSyncViewer.AssemblyInfoInputs.cache
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\ContactsSyncViewer.AssemblyInfo.cs
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\ContactsSyncViewer.csproj.CoreCompileInputs.cache
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\XamlC.stamp
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\ContactsSyncViewer.dll
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\ref\ContactsSyncViewer.dll
+F:\ContactsViewer-master\ContactsSyncViewer\ContactsSyncViewer\ContactsSyncViewer\obj\Debug\netstandard2.0\ContactsSyncViewer.pdb

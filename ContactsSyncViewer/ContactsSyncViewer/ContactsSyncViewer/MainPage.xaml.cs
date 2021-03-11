@@ -43,15 +43,15 @@ namespace ContactsSyncViewer
             if (!UIlocker)
             {
                 UIlocker = true;
-                bool answer = await DisplayAlert("Внимание", "Хотите ли Вы синхронизировать контакты?", "Да", "Нет");
+                bool answer = await DisplayAlert("Warning", "Do You want to synchronize contacts?", "Yes", "No");
 
                 if (answer)
                 {
-                    Indicator.IsVisible = true;
-                    Indicator.IsRunning = true;
+                    ChangeIndicatorState(true, true);
+
                     Indicator.Color = Color.FromHex("#2196F3");
-                    SynchLabel.Text = "Синхронизация";
-                    SynchLabel.TextColor = Color.DarkOrange;
+
+                    ChangeSynchLabel("Synchronization", Color.DarkOrange);
 
                      var synchComplete = await Task.Run(() => new Synchronization().Synchronize());
 
@@ -61,19 +61,12 @@ namespace ContactsSyncViewer
                         ContactsList.ItemsSource = DBSingletone.Database.GetItems();
                         ContactsList.EndRefresh();
 
-                        Indicator.IsVisible = false;
-                        Indicator.IsRunning = false;
+                        ChangeIndicatorState(false, false);
 
                         if (synchComplete)
-                        {
-                            SynchLabel.Text = "Синхронизация Завершена";
-                            SynchLabel.TextColor = Color.Green;
-                        }
+                            ChangeSynchLabel("Synchronization Complete", Color.Green);
                         else
-                        {
-                            SynchLabel.Text = "Ошибка Синхронизации";
-                            SynchLabel.TextColor = Color.Red;
-                        }
+                            ChangeSynchLabel("Synchronization Error", Color.Red);
 
                         UIlocker = false;
                     });
@@ -81,6 +74,20 @@ namespace ContactsSyncViewer
                 else
                     UIlocker = false;
             }
+        }
+
+
+        private void ChangeIndicatorState(bool isVisible, bool isRunning)
+        {
+            Indicator.IsVisible = isVisible;
+            Indicator.IsRunning = isRunning;          
+        }
+
+        private void ChangeSynchLabel(string text, Color textColor)
+        {
+            SynchLabel.Text = text;
+            SynchLabel.TextColor = textColor;
+           
         }
     }
 }
