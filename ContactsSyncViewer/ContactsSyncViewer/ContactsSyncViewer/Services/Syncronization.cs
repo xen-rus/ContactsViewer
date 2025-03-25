@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using ContactsSyncViewer.Database;
 using ContactsSyncViewer.Interfaces;
 using ContactsSyncViewer.Models;
@@ -10,14 +11,14 @@ namespace ContactsSyncViewer.Services
 {
     class Synchronization
     {
-        public  bool Synchronize()
+        public async Task<bool> SynchronizeAsync()
         {
-           var internalContacts = DependencyService.Get<IContactsImporter>().GetContacts();
+           var internalContacts = await DependencyService.Get<IContactsImporter>().GetContactsAsync();
 
             var synchComplete = DependencyService.Get<IContactsImporter>().Synch;
 
             if (synchComplete)
-                return DBSingletone.Database.SyncronizeContacts(internalContacts);
+                return DBSingletone.Database.SynchronizeContacts(internalContacts);
             else
                 return false;
         }

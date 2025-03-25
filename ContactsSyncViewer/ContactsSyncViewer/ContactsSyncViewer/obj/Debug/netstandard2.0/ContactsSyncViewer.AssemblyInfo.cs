@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ContactsSyncViewer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1493ac6c057c8a749bcdb49baaddcb43554e170f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ContactsSyncViewer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ContactsSyncViewer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

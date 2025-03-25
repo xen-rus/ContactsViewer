@@ -10,6 +10,7 @@ using ContactsSyncViewer.Interfaces;
 using Contacts;
 using System.Collections;
 using ContactsSyncViewer.Models;
+using System.Threading.Tasks;
 
 [assembly: Xamarin.Forms.Dependency(typeof(ContactsSyncViewer.iOS.ContactsImporter))]
 namespace ContactsSyncViewer.iOS
@@ -22,7 +23,7 @@ namespace ContactsSyncViewer.iOS
         private bool bSynch;
 
 
-        public Dictionary <int, IContact> GetContacts()
+        public async Task<Dictionary<int, IContact>> GetContactsAsync()
         {
             var Dictionary = new Dictionary<int, IContact>();
 
@@ -30,7 +31,7 @@ namespace ContactsSyncViewer.iOS
 
             try
             {
-
+                return await Task.Run(() => { 
                 var keysToFetch = new[] {
                         CNContactKey.PhoneNumbers, CNContactKey.GivenName, CNContactKey.FamilyName
                         };
@@ -65,14 +66,14 @@ namespace ContactsSyncViewer.iOS
                     }
 
                 }
+                    return Dictionary;
+                });
             }
             catch 
             {
                 bSynch = false;
             }
-
             return Dictionary;
-
         }
     }
 }

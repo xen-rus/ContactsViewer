@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ContactsSyncViewer.Interfaces
 {
+
     public interface IContactsImporter
     {
-        Dictionary <int, IContact> GetContacts();
+        Task<Dictionary<int, IContact>> GetContactsAsync();
         bool Synch { get ;}
     }
 }

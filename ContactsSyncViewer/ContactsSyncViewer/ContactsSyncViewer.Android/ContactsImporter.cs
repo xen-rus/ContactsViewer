@@ -27,7 +27,7 @@ namespace ContactsSyncViewer.Droid
     class ContactsImporter : IContactsImporter
     {     
         // Task locker object
-        object locker = new object();
+        static object locker = new object();
 
         //Main Dictionary
         Dictionary<int, IContact> internalDictionary = new Dictionary<int, IContact>();
@@ -42,7 +42,7 @@ namespace ContactsSyncViewer.Droid
         private bool bSynch;
 
 
-        public Dictionary <int, IContact> GetContacts()
+        public async Task<Dictionary<int, IContact>> GetContactsAsync()
         {
             bSynch = true;
 
@@ -73,7 +73,7 @@ namespace ContactsSyncViewer.Droid
                     cursorTasks[i] = Task.Run(async() => await  CoursorMultiTasks(cr, index * chunk, (index + 1) * chunk));
                 }
 
-                Task.WaitAll(cursorTasks);
+                await Task.WhenAll(cursorTasks);
 
                 foreach (var result in cursorTasks)
                 {
